@@ -1,0 +1,1 @@
+c:\python33\scripts\nosetests.exe -v
