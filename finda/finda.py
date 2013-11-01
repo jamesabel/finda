@@ -56,4 +56,8 @@ class Finda:
 
     def print(self):
         for match in self.matches:
-            print(match)
+            try:
+                print(match)
+            except:
+                if self.verbose:
+                    print("error printing match")

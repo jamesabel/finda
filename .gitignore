@@ -6,7 +6,7 @@
 # Packages
 *.egg
 *.egg-info
-dist
+#dist
 build
 eggs
 parts
@@ -42,3 +42,4 @@ temp
 test/temp/
 # PyCharm
 .idea
+MANIFEST
