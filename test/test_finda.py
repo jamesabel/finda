@@ -6,7 +6,7 @@ import finda.finda
 class TestFinda(unittest.TestCase):
 
     def setUp(self):
-        self.test_data_folder = os.path.join('test', 'files') # called 'files' since it can't have letters a, b, c
+        self.test_data_folder = os.path.join('test', 'temp') # called 'temp' since it can't have letters a, b, c
         self.test_data_sub_folder = os.path.join(self.test_data_folder, 'c')
         self.make_data_files()
 

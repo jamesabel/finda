@@ -34,3 +34,11 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# jca
+repo_ignore/
+temp
+# test files that are dynamically created by the test program itself
+test/temp/
+# PyCharm
+.idea
