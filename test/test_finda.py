@@ -37,18 +37,23 @@ class TestFinda(unittest.TestCase):
             with open(file_path, 'w') as f:
                 f.write('ef')
 
-    def test_single_filename(self):
-        finder = finda.finda.Finda(['a0'], [self.test_data_folder], True)
+    def test_single_filename_case_sensitive(self):
+        finder = finda.finda.Finda(['a0'], [], [self.test_data_folder], True, True)
+        finder.run()
+        self.assertEqual([os.path.join(self.test_data_folder, 'a0.txt')], finder.get_matches())
+
+    def test_single_filename_case_insensitve(self):
+        finder = finda.finda.Finda(['A0'], [], [self.test_data_folder], False, True)
         finder.run()
         self.assertEqual([os.path.join(self.test_data_folder, 'a0.txt')], finder.get_matches())
 
     def test_contents(self):
-        finder = finda.finda.Finda(['ef'], [self.test_data_folder], True)
+        finder = finda.finda.Finda(['ef'], [], [self.test_data_folder], False, True)
         finder.run()
         self.assertEqual([os.path.join(self.test_data_folder, '_.txt')], finder.get_matches())
 
     def test_folder_only(self):
-        finder = finda.finda.Finda(['c'], [self.test_data_folder], True)
+        finder = finda.finda.Finda(['c'], [], [self.test_data_folder], False, True)
         finder.run()
         files = [os.path.join(self.test_data_sub_folder, 'a4.txt'),
                  os.path.join(self.test_data_sub_folder, 'a5.txt'),
@@ -59,21 +64,45 @@ class TestFinda(unittest.TestCase):
 
     # test the and-ing on the contents only
     def test_and_contents(self):
-        finder = finda.finda.Finda(['e', 'f'], [self.test_data_folder], True)
+        finder = finda.finda.Finda(['e', 'f'], [], [self.test_data_folder], False, True)
         finder.run()
         self.assertIn(os.path.join(self.test_data_folder, '_.txt'), finder.get_matches())
 
     # test the and-ing on the filename only
     def test_and_filename(self):
-        finder = finda.finda.Finda(['a', '0'], [self.test_data_folder], True)
+        finder = finda.finda.Finda(['a', '0'], [], [self.test_data_folder], False, True)
         finder.run()
         self.assertEqual([os.path.join(self.test_data_folder, 'a0.txt')], finder.get_matches())
 
     # test and-ing across contents and file name
     def test_and_contents_and_filename(self):
-        finder = finda.finda.Finda(['a', 'b'], [self.test_data_folder], True)
+        finder = finda.finda.Finda(['a', 'b'], [], [self.test_data_folder], False, True)
         finder.run()
         files = [os.path.join(self.test_data_folder, 'b3.txt'),
                  os.path.join(self.test_data_sub_folder, 'b7.txt')]
         files.sort()
+        self.assertEqual(files, finder.get_matches())
+
+    def test_exclude_no_match(self):
+        finder = finda.finda.Finda(['a0'], ['zzz'], [self.test_data_folder], False, True)
+        finder.run()
+        self.assertEqual([os.path.join(self.test_data_folder, 'a0.txt')], finder.get_matches())
+
+    def test_exclude_match(self):
+        finder = finda.finda.Finda(['c'], ['a'], [self.test_data_folder], False, True)
+        finder.run()
+        self.assertEqual([os.path.join(self.test_data_sub_folder, 'b6.txt')], finder.get_matches())
+
+    def test_exclude_match_multiple(self):
+        finder = finda.finda.Finda(['c'], ['4', '5', '6'], [self.test_data_folder], False, True)
+        finder.run()
+        self.assertEqual([os.path.join(self.test_data_sub_folder, 'b7.txt')], finder.get_matches())
+
+    def test_a_exclude_b(self):
+        finder = finda.finda.Finda(['a'], ['b'], [self.test_data_folder], False, True)
+        files = [os.path.join(self.test_data_folder, 'a0.txt'),
+                 os.path.join(self.test_data_folder, 'a1.txt'),
+                 os.path.join(self.test_data_sub_folder, 'a4.txt'),
+                 os.path.join(self.test_data_sub_folder, 'a5.txt')]
+        finder.run()
         self.assertEqual(files, finder.get_matches())
