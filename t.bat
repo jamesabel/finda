@@ -1,1 +1,1 @@
-c:\python33\scripts\nosetests.exe -v
+c:\python34\scripts\nosetests.exe -v
