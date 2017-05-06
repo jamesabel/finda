@@ -6,6 +6,14 @@ file contents.  It's like the Linux/Unix `find` command, but easier to use for m
 
 Execute the program for help messages.
 
+Downloads
+=========
+Prebuilt executables:
+
+Windows: [finda.exe](https://s3.amazonaws.com/abel.co/finda/finda.exe)
+
+Mac/OSX: [finda.dmg](https://s3.amazonaws.com/abel.co/finda/finda.dmg)
+
 Builds
 ======
 
