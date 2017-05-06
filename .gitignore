@@ -43,3 +43,6 @@ test/temp/
 # PyCharm
 .idea
 MANIFEST
+dist/
+installs/
+aws/
