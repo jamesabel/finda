@@ -2,14 +2,16 @@ finda
 =====
 
 `finda` is a command line tool that searches folder(s) for the occurrence of string(s) in the path, file name or 
-file contents.  Execute the program for help messages.
+file contents.  It's like the Linux/Unix `find` command, but easier to use for many use cases.
+
+Execute the program for help messages.
 
 Builds
 ======
 
 **Windows**
 
-A single `finda.exe` is created.  This can be put anywhere you can execute it (e.g. in your `PATH`)
+A single, stand-alone file executable file `finda.exe` is created in `dist\finda.exe`.
 
 **Mac/Linux**
 
@@ -19,3 +21,7 @@ Move `finda.app` to a place you have your personal binary tools.  I tend to use 
 Then you can put the line below in your `~/.bashrc` so you can just run `finda` on the command line:
 
     alias finda="~/b/finda.app/Contents/MacOS/finda"
+
+Reference
+=========
+Author: James Abel ([abel.co](http://www.abel.co))
