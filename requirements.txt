@@ -1,7 +1,6 @@
 py2app; sys_platform == 'darwin'
 py2exe; sys_platform == 'win32'
 #
-#
 # only use these for development
 # pytest
 # coverage
