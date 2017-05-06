@@ -14,8 +14,9 @@ if platform_char == 'w':
 
           # single executable
           options={'py2exe': {'bundle_files': 1}},
-          zipfile=None,
+          zipfile=None
           )
+
 elif platform_char == 'd':
     # mac
     """
