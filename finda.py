@@ -19,7 +19,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.license:
-        print(finda.license.LICENCE)
+        print(finda.license.LICENSE)
     else:
         if args.strings:
             finder = finda.finda.Finda(args.strings, args.exclude, args.paths, args.case, args.verbose)

@@ -1,7 +1,7 @@
 
 # same thing that's in the LICENSE file
 
-LICENCE = \
+LICENSE = \
 """
 The MIT License (MIT)
 
