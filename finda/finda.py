@@ -64,8 +64,9 @@ class Finda:
             mtime = 0
             try:
                 mtime = os.path.getmtime(file_path)
-            except:
-                raise
+            except FileNotFoundError as e:
+                if self.verbose:
+                    print(str(e))
             self.matches.append({'path': file_path, 'mtime': mtime})
 
     def remove(self, s, s2, l):
