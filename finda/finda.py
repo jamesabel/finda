@@ -55,9 +55,9 @@ class Finda:
                     with open(file_path) as f:
                         for line in f.readlines():
                             self.remove(exclude, line, self.remove_excludes)
-        except:
+        except UnicodeDecodeError:
             if self.verbose:
-                print("could not read ", file_path)
+                print("UnicodeDecodeError : %s" % file_path)
 
     def append(self, file_path):
         if file_path not in self.matches:
