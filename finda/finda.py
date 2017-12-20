@@ -61,6 +61,9 @@ class Finda:
         except FileNotFoundError as e:
             if self.verbose:
                 print(str(e))
+        except PermissionError as e:
+            if self.verbose:
+                print(str(e))
 
     def append(self, file_path):
         if file_path not in self.matches:
